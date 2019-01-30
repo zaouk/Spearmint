@@ -1,0 +1,86 @@
+{
+    "language": "PYTHON",
+    "main-file": "hello_world.py",
+    "offline-data-path": "~/Desktop/10.csv",
+    "experiment-name": "spark-streaming",
+    "variables": {
+        "batchInterval": {
+            "type": "INT",
+            "size": 1,
+            "min": 1,
+            "max": 60
+        },
+        "spark.streaming.blockInterval": {
+            "type": "INT",
+            "size": 1,
+            "min": 50,
+            "max": 6000
+        },
+        "spark.default.parallelism": {
+            "type": "INT",
+            "size": 1,
+            "min": 8,
+            "max": 288
+        },
+        "inputRate": {
+            "type": "INT",
+            "size": 1,
+            "min": 660000,
+            "max": 2000000
+        },
+        "spark.reducer.maxSizeInFlight": {
+            "type": "INT",
+            "size": 1,
+            "min": 10,
+            "max": 500
+        },
+        "spark.shuffle.sort.bypassMergeThreshold": {
+            "type": "INT",
+            "size": 1,
+            "min": 5,
+            "max": 290
+        },
+        "spark.shuffle.compress": {
+            "type": "ENUM",
+            "size": 1,
+            "options": [
+                "true",
+                "false"
+            ]
+        },
+        "exec_properties": {
+            "type": "ENUM",
+            "size": 1,
+            "options": [
+                "2_2_4",
+                "3_2_4",
+                "2_4_8",
+                "4_2_4",
+                "3_4_8",
+                "4_3_6",
+                "6_2_4",
+                "4_4_8",
+                "8_2_4",
+                "6_4_8",
+                "8_3_6",
+                "12_2_4",
+                "8_4_8",
+                "16_2_4",
+                "18_4_8",
+                "24_3_6",
+                "36_2_4"
+            ]
+        }
+    },
+    "tasks": {
+        "latency": {
+            "type": "OBJECTIVE",
+            "likelihood": "NOISELESS"
+        },
+        "block_interval_less_than_batch_interval": {
+            "type": "CONSTRAINT",
+            "likelihood": "NOISELESS"
+        }
+    },
+    "polling-time": 1
+}
