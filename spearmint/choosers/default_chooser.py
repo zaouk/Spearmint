@@ -302,6 +302,8 @@ class DefaultChooser(object):
                 vals = data_dict['values'] if data_dict.has_key('values') else data_dict['counts']
 
                 sys.stderr.write('Fitting %s for %s task...\n' % (model_class, task_name))
+                sys.stderr.write('[X shape: %s \t | y shape: %s]\n'%(np.shape(data_dict['inputs']),
+                 np.shape(vals)))
                 new_hypers[task_name] = self.models[task_name].fit(
                     data_dict['inputs'],
                     vals,

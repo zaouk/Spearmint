@@ -60,13 +60,20 @@ SC_TO_CAT = {True: 0,
 
 
 class OfflineDataConnector:
-    def __init__(self, trace_path, constraints):
+    def __init__(self, trace_path, constraints=None):
+        # TODO:
+        # Add constraints that should be something like:
+        # {'metric_name': {'min': ..., 'max': ...}}
+
         # Reading traces for the current Spark Streaming workload.
         df = pd.read_csv(trace_path)
 
         # Removing units in maxSizeInFlight and Exec's memory
         df[MSF] = list(map(lambda val: int(val[:-1]), df[MSF]))
         df[EM] = list(map(lambda val: int(val[:-1]), df[EM]))
+
+        # TODO
+        # filter the rows that violate some constraints
 
         # Transforming back the value of exec memory to GB (by adding the subtracted overhead)
         df[EM] = list(map(lambda val: int(round(val/(0.8*1024))), df[EM]))

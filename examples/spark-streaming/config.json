@@ -1,7 +1,6 @@
 {
     "language": "PYTHON",
-    "main-file": "hello_world.py",
-    "offline-data-path": "~/Desktop/10.csv",
+    "main-file": "latency.py",
     "experiment-name": "spark-streaming",
     "variables": {
         "batchInterval": {
